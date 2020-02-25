@@ -260,7 +260,11 @@ self: super: {
         --replace "'rg'" "'${ripgrep}/bin/rg'" \
         --replace \
         "let s:python_executable = executable('pypy3') ? 'pypy3' : 'python3'" \
-        "let s:python_executable = '${python3}/bin/python3'"
+        "let s:python_executable = '${python3}/bin/python3'" \
+         --replace \
+        "if !exists('g:nv_search_paths')" \
+        "let g:nv_search_paths = [ '~/notes', './notes.md' ] 
+        if !exists('g:nv_search_paths')";
     '';
   });
 
